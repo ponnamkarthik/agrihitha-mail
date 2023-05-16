@@ -1,14 +1,17 @@
 const axios = require('axios')
 const express = require('express')
+var cors = require('cors')
 
 const app = express()
+app.use(cors())
+// get json from the request
+app.use(express.json())
+
 app.all('/', (req, res) => {
     console.log("Just got a request!")
     res.send('Yo!')
 })
 
-// get json from the request
-app.use(express.json())
 
 // create post endpoint for mail
 app.post('/mail', (req, res) => {
