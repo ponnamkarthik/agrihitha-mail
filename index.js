@@ -15,10 +15,6 @@ app.all('/', (req, res) => {
 
 // create post endpoint for mail
 app.post('/mail', (req, res) => {
-    console.log(req.body)
-    console.log("Just got a request!")
-    res.send('Yo!')
-
     let data = JSON.stringify(req.body);
 
     let config = {
@@ -34,10 +30,11 @@ app.post('/mail', (req, res) => {
 
     axios.request(config)
     .then((response) => {
-    console.log(JSON.stringify(response.data));
+        console.log(JSON.stringify(response.data));
+        res.send(response.data)
     })
     .catch((error) => {
-    console.log(error);
+        res.status(404).send({"error": error})
     });
 
 })
