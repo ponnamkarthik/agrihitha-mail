@@ -8,7 +8,6 @@ app.use(cors())
 app.use(express.json())
 
 app.all('/', (req, res) => {
-    console.log("Just got a request!")
     res.send('Yo!')
 })
 
@@ -30,7 +29,6 @@ app.post('/mail', (req, res) => {
 
     axios.request(config)
     .then((response) => {
-        console.log(JSON.stringify(response.data));
         res.send(response.data)
     })
     .catch((error) => {
